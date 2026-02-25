@@ -311,6 +311,69 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
+        /* Spoe Programı Section */
+        .spoe-section {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .spoe-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF6B35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px #FFD700); }
+            to { filter: drop-shadow(0 0 20px #FFA500); }
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(255,215,0,0.3);
+            border: 3px solid rgba(255,215,0,0.5);
+        }
+
+        .spoe-video {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .spoe-cta {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 2rem 3rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,215,0,0.3);
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .spoe-cta:hover {
+            transform: scale(1.05);
+            background: rgba(255,215,0,0.2);
+            box-shadow: 0 15px 40px rgba(255,215,0,0.4);
+        }
+
         /* Animations */
         .menu-category {
             animation: slideInUp 0.8s ease-out forwards;
@@ -323,6 +386,7 @@
         .menu-category:nth-child(3) { animation-delay: 0.3s; }
         .menu-category:nth-child(4) { animation-delay: 0.4s; }
         .menu-category:nth-child(5) { animation-delay: 0.5s; }
+        .menu-category:nth-child(6) { animation-delay: 0.6s; }
 
         @keyframes slideInUp {
             to {
@@ -399,6 +463,19 @@
                 font-size: 1.1rem;
                 padding: 1.5rem;
             }
+
+            .spoe-title {
+                font-size: 2.5rem;
+            }
+
+            .spoe-video {
+                height: 250px;
+            }
+
+            .spoe-cta {
+                font-size: 1.8rem;
+                padding: 1.5rem 2rem;
+            }
         }
 
         /* Scroll animations */
@@ -421,7 +498,7 @@
             <ul class="nav-links">
                 <li><a href="#anasayfa">Ana Sayfa</a></li>
                 <li><a href="#menu">Menü</a></li>
-                <li><a href="#iletisim">İletişim</a></li>
+                <li><a href="#spoe">Spoe Programı</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -545,6 +622,19 @@
         </div>
     </section>
 
+    <!-- Spoe Programı Section -->
+    <section id="spoe" class="spoe-section">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h2 class="spoe-title">Spoe Programı</h2>
+            <div class="video-container">
+                <video class="spoe-video" src="5x30.mp4" muted loop playsinline autoplay>
+                    Tarayıcınız video oynatmayı desteklemiyor.
+                </video>
+            </div>
+            <div class="spoe-cta">Bunu uygulayın</div>
+        </div>
+    </section>
+
     <footer>
         <div class="social-links">
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -617,6 +707,24 @@
             hero.style.transform = `translateY(${speed}px)`;
         });
 
+        // Video loop & autoplay fix
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('.spoe-video');
+            video.play().catch(e => {
+                // Autoplay failed, user interaction needed
+                console.log('Autoplay prevented');
+            });
+
+            // Trigger initial animations
+            setTimeout(() => {
+                document.querySelectorAll('.menu-category').forEach((cat, index) => {
+                    setTimeout(() => {
+                        cat.style.animationPlayState = 'running';
+                    }, index * 200);
+                });
+            }, 500);
+        });
+
         // Price counter animation
         function animatePrice(element) {
             const price = parseFloat(element.textContent.replace(/[^d.]/g, ''));
@@ -632,23 +740,18 @@
             }, 30);
         }
 
-        // Hover price animation
         document.querySelectorAll('.item-price').forEach(priceEl => {
             priceEl.addEventListener('mouseenter', () => {
                 animatePrice(priceEl);
             });
         });
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            // Trigger initial animations
+        // Spoe CTA hover effect
+        document.querySelector('.spoe-cta').addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
             setTimeout(() => {
-                document.querySelectorAll('.menu-category').forEach((cat, index) => {
-                    setTimeout(() => {
-                        cat.style.animationPlayState = 'running';
-                    }, index * 200);
-                });
-            }, 500);
+                this.style.transform = 'scale(1.05)';
+            }, 150);
         });
     </script>
 </body>
