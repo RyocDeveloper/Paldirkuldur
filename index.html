@@ -216,6 +216,24 @@
             background: linear-gradient(45deg, #FFD700, #FFA500);
         }
 
+        .promo-banner {
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -261,15 +279,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
             border-bottom: 1px dashed #eee;
             transition: all 0.3s;
+            position: relative;
         }
 
         .menu-item:hover {
             padding-left: 1rem;
-            background: rgba(255,215,0,0.05);
-            border-radius: 10px;
+            background: linear-gradient(90deg, rgba(255,215,0,0.1), transparent);
+            border-radius: 15px;
+            transform: scale(1.02);
         }
 
         .menu-item:last-child {
@@ -280,13 +300,15 @@
             font-weight: 500;
             color: #555;
             font-size: 1.1rem;
+            max-width: 70%;
         }
 
         .item-price {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #D2691E;
             font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         /* Animations */
@@ -300,6 +322,7 @@
         .menu-category:nth-child(2) { animation-delay: 0.2s; }
         .menu-category:nth-child(3) { animation-delay: 0.3s; }
         .menu-category:nth-child(4) { animation-delay: 0.4s; }
+        .menu-category:nth-child(5) { animation-delay: 0.5s; }
 
         @keyframes slideInUp {
             to {
@@ -325,11 +348,12 @@
             color: white;
             font-size: 1.5rem;
             margin: 0 1rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         .social-links a:hover {
             color: #FFD700;
+            transform: scale(1.2);
         }
 
         /* Mobile Responsive */
@@ -369,6 +393,11 @@
 
             .section-title {
                 font-size: 2.2rem;
+            }
+
+            .promo-banner {
+                font-size: 1.1rem;
+                padding: 1.5rem;
             }
         }
 
@@ -413,22 +442,44 @@
     <section id="menu" class="menu">
         <h2 class="section-title">Menümüz</h2>
         
+        <div class="promo-banner">
+            🔥 <strong>Menüden 5 Yemek Sipariş Edene Kaliteli Pencili (Halı Motifli) Halı Hediye!</strong> 🔥
+        </div>
+        
         <div class="menu-grid">
             <div class="menu-category scroll-animate">
                 <h3 class="category-title">
-                    <i class="fas fa-fish"></i> Ana Yemekler
+                    <i class="fas fa-fish"></i> Deniz Ürünleri & Özel Soslar
                 </h3>
                 <div class="menu-item">
                     <span class="item-name">Deniz Usta'nın özel sosu</span>
                     <span class="item-price">19 TL</span>
                 </div>
                 <div class="menu-item">
+                    <span class="item-name">Deniz Usta'nın özel ayranı</span>
+                    <span class="item-price">1.299 TL</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Kerem Usta'nın Spesyal Sunumlu Istakozlu Frittata'sı</span>
+                    <span class="item-price">8.999 TL</span>
+                </div>
+            </div>
+
+            <div class="menu-category scroll-animate">
+                <h3 class="category-title">
+                    <i class="fas fa-drumstick-bite"></i> Dürüm Efsaneleri
+                </h3>
+                <div class="menu-item">
                     <span class="item-name">Yiğit Usta'nın 95 cm'lik özel dürümü</span>
                     <span class="item-price">345 TL</span>
                 </div>
                 <div class="menu-item">
-                    <span class="item-name">Halil Usta'nın Özel Tabağı</span>
-                    <span class="item-price">643 TL</span>
+                    <span class="item-name">Kadir Usta'nın 999 Cm'lik Özel Dürümü</span>
+                    <span class="item-price">69.999 TL</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Yiğit Usta'nın Merzifon Eşşeği</span>
+                    <span class="item-price">2.847 TL</span>
                 </div>
             </div>
 
@@ -439,6 +490,14 @@
                 <div class="menu-item">
                     <span class="item-name">Selim bey boru dürüm (567 cm)</span>
                     <span class="item-price">999 TL</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Halil Usta'nın Damat Atomu</span>
+                    <span class="item-price">4.567 TL</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Halil Usta'nın Galatasaray Aslanı</span>
+                    <span class="item-price">7.777 TL</span>
                 </div>
             </div>
 
@@ -464,6 +523,24 @@
                     <span class="item-name">Özel Kadayıflı Bol Soslu Künefe</span>
                     <span class="item-price">125 TL</span>
                 </div>
+                <div class="menu-item">
+                    <span class="item-name">Hüseyin Usta'nın Afgan Künefesi</span>
+                    <span class="item-price">3.141 TL</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Paldır Küldür Enfes Spesyal Tatlısı</span>
+                    <span class="item-price">1.111 TL</span>
+                </div>
+            </div>
+
+            <div class="menu-category scroll-animate">
+                <h3 class="category-title">
+                    <i class="fas fa-medal"></i> Usta Lezzetler
+                </h3>
+                <div class="menu-item">
+                    <span class="item-name">Halil Usta'nın Özel Tabağı</span>
+                    <span class="item-price">643 TL</span>
+                </div>
             </div>
         </div>
     </section>
@@ -475,7 +552,7 @@
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p>&copy; 2026 Paldır Küldür Restaurant. Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 Paldır Küldür Restaurant. Tüm hakları saklıdır. 5 yemek = ÜCRETSİZ Halı!</p>
     </footer>
 
     <script>
@@ -540,14 +617,38 @@
             hero.style.transform = `translateY(${speed}px)`;
         });
 
-        // Counter animation (for future use)
-        function animateCounters() {
-            // Placeholder for counters if needed
+        // Price counter animation
+        function animatePrice(element) {
+            const price = parseFloat(element.textContent.replace(/[^d.]/g, ''));
+            let current = 0;
+            const increment = price / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= price) {
+                    current = price;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + ' TL';
+            }, 30);
         }
+
+        // Hover price animation
+        document.querySelectorAll('.item-price').forEach(priceEl => {
+            priceEl.addEventListener('mouseenter', () => {
+                animatePrice(priceEl);
+            });
+        });
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            animateCounters();
+            // Trigger initial animations
+            setTimeout(() => {
+                document.querySelectorAll('.menu-category').forEach((cat, index) => {
+                    setTimeout(() => {
+                        cat.style.animationPlayState = 'running';
+                    }, index * 200);
+                });
+            }, 500);
         });
     </script>
 </body>
